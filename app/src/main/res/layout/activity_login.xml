@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
+        android:id = "@+id/bt_oauth_login"
+        android:layout_width="wrap_content"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="416dp"
+        android:layout_height="50dp" />
+
+    <Button
+        android:id="@+id/bt_login_temporary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="113dp"
+        android:layout_toEndOf="@+id/bt_oauth_login"
+        android:layout_toRightOf="@+id/bt_oauth_login"
+        android:text="임시버튼" />
+
+</RelativeLayout>
