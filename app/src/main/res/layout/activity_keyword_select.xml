@@ -19,9 +19,10 @@
             app:srcCompat="@drawable/btn_logo_color" />
         <Button
             android:id="@+id/bt_keyword_ok"
-            android:textColor="@color/white"
+            android:textColor="@color/tealish"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
+            android:background="@android:color/transparent"
             android:layout_margin="11.9dp"
             android:layout_height="match_parent"
             android:text="완료" />
@@ -30,34 +31,47 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/bt_keyword_it"
-            android:text="IT"
             android:layout_width="wrap_content"
+            android:text="IT/과학"
+            android:textColor="@color/white"
+            android:layout_margin="20dp"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_it" />
         <Button
+            android:layout_margin="20dp"
             android:id="@+id/bt_keyword_society"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="social"
-            android:background="@drawable/btn_social" />
+            android:background="@drawable/btn_social"
+            android:text="사회"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal">
         <Button
+            android:layout_margin="20dp"
             android:id="@+id/bt_keyword_politics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="정치"
+            android:textColor="@color/white"
             android:background="@drawable/btn_politics" />
         <Button
+            android:layout_margin="20dp"
             android:id="@+id/bt_keyword_economics"
             android:layout_width="wrap_content"
+            android:text="경제"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_economy" />
 

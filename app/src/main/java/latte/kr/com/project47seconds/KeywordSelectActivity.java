@@ -92,7 +92,7 @@ public class KeywordSelectActivity extends AppCompatActivity {
                     requestKeywords[3] = 1;
                     btKeyword[3].setBackgroundResource(R.drawable.btn_it_clicked);
                 } else {
-                    btKeyword[3].setBackgroundResource(R.drawable.btn_it_clicked);
+                    btKeyword[3].setBackgroundResource(R.drawable.btn_it);
                     requestKeywords[3] = 0;
                 }
             }
@@ -102,7 +102,7 @@ public class KeywordSelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 test();
-                Intent intent = new Intent(KeywordSelectActivity.this, MainActivity.class);
+                Intent intent = new Intent(KeywordSelectActivity.this, HomeActivity.class);
                 intent.putExtra("keywords", requestKeywords);
                 startActivity(intent);
             }
