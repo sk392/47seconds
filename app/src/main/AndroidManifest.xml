@@ -22,6 +22,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".MediaPlayerService"
+            android:exported="false"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="latte.kr.com.project47seconds.ACTION_PLAY" />
+                <action android:name="latte.kr.com.project47seconds.ACTION_PAUSE" />
+                <action android:name="latte.kr.com.project47seconds.ACTION_STOP" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".SplashActivity"/>
+        <activity android:name=".KeywordSelectActivity"/>
     </application>
 
 </manifest>

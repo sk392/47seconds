@@ -29,7 +29,6 @@ public class SpeechPost extends AsyncTask<String, Void, String> {
     private String url;
     //결과 값
     private String res;
-    private Context mContext;
     private boolean isLoadingImg = true;
     private CallbackEvent callbackEvent;
 
@@ -40,8 +39,7 @@ public class SpeechPost extends AsyncTask<String, Void, String> {
         void getResult(String result);
     }
 
-    public SpeechPost(Context context) {
-        this.mContext = context;
+    public SpeechPost() {
         callbackEvent = null;
 
     }
@@ -87,11 +85,9 @@ public class SpeechPost extends AsyncTask<String, Void, String> {
         StringBuffer response = new StringBuffer();
         String clientId;//애플리케이션 클라이언트 아이디값";
         String clientSecret;//애플리케이션 클라이언트 시크릿값";
-        clientId = "IK6n9BUXsIgzYMJlHnoH";
-        clientSecret = "wHoKohKE5L";
+        clientId = "NlOMyRmPxwImpV4arNxj";
+        clientSecret = "jceKItmB58";
         String filepath = "";
-        Log.d("SpeechPost", "Context = " + mContext.getClass().getName() + " / Request =" + params[0].toString());
-        if (NetworkUtil.getConnectivityStatus(mContext) != NetworkUtil.TYPE_NOT_CONNECTED) {
             //네트워크가 연결되었을 경우만.
 
             try {
@@ -142,11 +138,7 @@ public class SpeechPost extends AsyncTask<String, Void, String> {
             }
             res = filepath;
             return res;
-        } else {
-            //네트워크가 연결되어 있지 않을 때.
-            res = "{'err':'100', 'err_result':'네트워크 연결을 확인해주세요.'}";
-            return res;
-        }
+
     }
 
     public boolean isLoadingImg() {
