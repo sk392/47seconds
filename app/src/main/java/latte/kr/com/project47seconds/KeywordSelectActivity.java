@@ -99,6 +99,7 @@ public class KeywordSelectActivity extends AppCompatActivity {
         btOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
                 Log.d("TAG", requestKeywords[0] + "");
                 Log.d("TAG", requestKeywords[1] + "");
                 Log.d("TAG", requestKeywords[2] + "");
@@ -116,6 +117,10 @@ public class KeywordSelectActivity extends AppCompatActivity {
                 sendPut.execute("category1=" + requestKeywords[0]+"&category2="+ requestKeywords[1]+"&category3="+ requestKeywords[2]+"&category4="+ requestKeywords[3]);
                 Intent intent = new Intent(KeywordSelectActivity.this, MainActivity.class);
 
+=======
+                test();
+                Intent intent = new Intent(KeywordSelectActivity.this, HomeActivity.class);
+>>>>>>> 3fce49359a8b87914ca7805cae89be86b8096353
                 intent.putExtra("keywords", requestKeywords);
                 startActivity(intent);
                 finish();
