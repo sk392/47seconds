@@ -6,6 +6,8 @@
     <color name="white">#FFFFFF</color>
     <color name="tealish">#43c3d1</color>
     <color name="lightGrey">#fcfdfd</color>
+    <color name="dimmed_color">#bdbdb7</color>
+    <color name="main_background">#fcfdfd</color>
     <color name="darkGrey">#bdbdb7</color>
 
 </resources>

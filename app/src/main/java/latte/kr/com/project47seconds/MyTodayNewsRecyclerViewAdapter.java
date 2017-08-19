@@ -6,20 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import latte.kr.com.project47seconds.TodayNewsFragment.OnListFragmentInteractionListener;
 import latte.kr.com.project47seconds.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
-public class MyTodayNewsRecyclerViewAdapter extends RecyclerView.Adapter<MyTodayNewsRecyclerViewAdapter.ViewHolder> {
+public class MyTodayNewsRecyclerViewAdapter  {}
 
+/*
     private final List<DummyItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
 
     public MyTodayNewsRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
@@ -73,5 +67,4 @@ public class MyTodayNewsRecyclerViewAdapter extends RecyclerView.Adapter<MyToday
         public String toString() {
             return super.toString() + " '" + mContentView.getText() + "'";
         }
-    }
-}
+    }*/

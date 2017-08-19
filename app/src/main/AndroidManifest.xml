@@ -10,15 +10,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon_144"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icon_144"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,10 +32,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
-
+        <activity
+            android:name="com.nhn.android.naverlogin.ui.OAuthLoginActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.nhn.android.naverlogin.ui.OAuthLoginInAppBrowserActivity"
+            android:label="OAuth2.0 In-app" />
         <activity android:name=".LoginActivity"/>
-        <activity android:name=".SplashActivity"/>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".KeywordSelectActivity"/>
+        <activity android:name=".HomeActivity"/>
     </application>
 
 </manifest>

@@ -3,23 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/img_bg"
+    android:orientation="vertical">
 
-    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
-        android:id = "@+id/bt_oauth_login"
-        android:layout_width="wrap_content"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="416dp"
-        android:layout_height="50dp" />
-
-    <Button
-        android:id="@+id/bt_login_temporary"
+    <ImageView
+        android:id="@+id/iv_tttttttt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="113dp"
-        android:layout_toEndOf="@+id/bt_oauth_login"
-        android:layout_toRightOf="@+id/bt_oauth_login"
-        android:text="임시버튼" />
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/btn_logo_2" />
+
+    <ImageView
+        android:layout_below="@id/iv_tttttttt"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/logo_47" />
+
+
+    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
+        android:id="@+id/bt_oauth_login"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="310dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_login" />
+
 
 </RelativeLayout>

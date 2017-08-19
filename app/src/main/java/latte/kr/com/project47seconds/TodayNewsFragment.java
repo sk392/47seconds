@@ -1,120 +1,69 @@
 package latte.kr.com.project47seconds;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import latte.kr.com.project47seconds.dummy.DummyContent;
-import latte.kr.com.project47seconds.dummy.DummyContent.DummyItem;
-
-import java.util.List;
-
-/**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
- */
 public class TodayNewsFragment extends Fragment {
-    private static TodayNewsFragment instance = null;
-    public static FragmentActivity activity;
+    View mView;
+    TextView tvHomeTodaynews1, tvHomeTodaynews2, tvHomeTodaynews3, tvHomeTodaynews4;
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mView = inflater.inflate(R.layout.fragment_todaynews, container, false);
+        xmlBinding();
+        return mView;
 
-
-    // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
-    private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
-
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
-    public TodayNewsFragment() {
-    }
-
-
-    public static TodayNewsFragment getInstance() {
-        if (instance == null) { // 최초 1회 초기화
-            instance = new TodayNewsFragment();
-        }
-        return instance;
-    }
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static TodayNewsFragment newInstance(int columnCount) {
-        TodayNewsFragment fragment = new TodayNewsFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-        }
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_todaynews_list, container, false);
-
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+    public void xmlBinding() {
+        tvHomeTodaynews1 = (TextView) mView.findViewById(R.id.tv_todaynews_1);
+        tvHomeTodaynews2 = (TextView) mView.findViewById(R.id.tv_todaynews_2);
+        tvHomeTodaynews3 = (TextView) mView.findViewById(R.id.tv_todaynews_3);
+        tvHomeTodaynews4 = (TextView) mView.findViewById(R.id.tv_todaynews_4);
+        tvHomeTodaynews1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvHomeTodaynews1.setTextColor(getResources().getColor(R.color.tealish));
+                tvHomeTodaynews2.setTextColor(getResources().getColor(R.color.dimmed_color));
+                tvHomeTodaynews3.setTextColor(getResources().getColor(R.color.dimmed_color));
+                tvHomeTodaynews4.setTextColor(getResources().getColor(R.color.dimmed_color));
             }
-            recyclerView.setAdapter(new MyTodayNewsRecyclerViewAdapter(DummyContent.ITEMS, mListener));
-        }
-        return view;
-    }
-
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        });
+        tvHomeTodaynews2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvHomeTodaynews1.setTextColor(getResources().getColor(R.color.dimmed_color));
+                tvHomeTodaynews2.setTextColor(getResources().getColor(R.color.tealish));
+                tvHomeTodaynews3.setTextColor(getResources().getColor(R.color.dimmed_color));
+                tvHomeTodaynews4.setTextColor(getResources().getColor(R.color.dimmed_color));
+            }
+        });
+        tvHomeTodaynews3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvHomeTodaynews1.setTextColor(getResources().getColor(R.color.dimmed_color));
+                tvHomeTodaynews2.setTextColor(getResources().getColor(R.color.dimmed_color));
+                tvHomeTodaynews3.setTextColor(getResources().getColor(R.color.tealish));
+                tvHomeTodaynews4.setTextColor(getResources().getColor(R.color.dimmed_color));
+            }
+        });
+        tvHomeTodaynews4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvHomeTodaynews1.setTextColor(getResources().getColor(R.color.dimmed_color));
+                tvHomeTodaynews2.setTextColor(getResources().getColor(R.color.dimmed_color));
+                tvHomeTodaynews3.setTextColor(getResources().getColor(R.color.dimmed_color));
+                tvHomeTodaynews4.setTextColor(getResources().getColor(R.color.tealish));
+            }
+        });
     }
 }

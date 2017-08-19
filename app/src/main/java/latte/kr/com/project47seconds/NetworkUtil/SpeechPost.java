@@ -27,6 +27,16 @@ public class SpeechPost extends AsyncTask<String, Void, String> {
     int sleepTime = 0;
 
     private String url;
+    private String data;
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
     //결과 값
     private String res;
     private boolean isLoadingImg = true;
@@ -91,7 +101,7 @@ public class SpeechPost extends AsyncTask<String, Void, String> {
             //네트워크가 연결되었을 경우만.
 
             try {
-                String text = URLEncoder.encode("2017-07-29 오늘의 뉴스입니다", "UTF-8"); // 13자
+                String text = URLEncoder.encode(data, "UTF-8"); // 13자
                 String apiURL = "https://openapi.naver.com/v1/voice/tts.bin";
                 URL url = new URL(apiURL);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();

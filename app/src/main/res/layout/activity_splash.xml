@@ -11,21 +11,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        app:srcCompat="@drawable/btn_logo_1_big" />
+        android:layout_marginTop="131dp"
+        app:srcCompat="@drawable/img_logo" />
 
 
-    <TextView
-        android:id="@+id/textView2"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        tools:text="안녕하세요. 오늘의 뉴스를 들려드릴게요."
         android:layout_below="@id/iv_big_logo"
+        android:layout_marginTop="35dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp" />
+        app:srcCompat="@drawable/invalid_name" />
 
 
 </RelativeLayout>

@@ -18,20 +18,21 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-
-//                SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
-//                String login_check = pref.getString("login_check", "false");
-//
-//                Log.d("LoginActivity.class", "login_check : "+ login_check);
-//                if ("true".equals(login_check)) {
-//                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-//                    startActivity(intent);
-//                } else {
-                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                    startActivity(intent);
-//                }
+                //자동로그인.
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(intent);
                 finish();
             }
-        }, 2000);
+        }, 3000);
+        SharedPreferences sharedPreferences = getSharedPreferences("main",MODE_PRIVATE);
+        int time=0;
+        try{
+            sharedPreferences.getInt("time",0);
+
+        }catch (Exception e){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("time",0);
+            editor.commit();
+        }
     }
 }

@@ -81,9 +81,6 @@ public class SendPost extends AsyncTask<String, Void, String> {
 
         callbackEvent.getResult(s);
         Log.d("SendPost", "Result =" + s);
-        if (isLoadingImg)
-            if (loadingProgressDialog != null)
-                loadingProgressDialog.dismiss();
     }
 
     public String getRes() {
@@ -136,7 +133,7 @@ public class SendPost extends AsyncTask<String, Void, String> {
                 os.close();
                 //서버에 성공적으로 접근했는지를 체크(기능의 성공[ex 로그인]과는 관계가 없다.
                 int retCode = conn.getResponseCode();
-                if (retCode == HttpURLConnection.HTTP_OK) {
+                if (retCode == 201 || retCode == 200) {
                     InputStream is = conn.getInputStream();
                     BufferedReader br = new BufferedReader(new InputStreamReader(is,"UTF-8"));
                     String line;

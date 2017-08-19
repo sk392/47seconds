@@ -1,81 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
+    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fitsSystemWindows="true"
+    android:layout_height="match_parent"
     tools:context="latte.kr.com.project47seconds.HomeActivity">
+    <RelativeLayout
+        android:id="@+id/rl_home_main"
+        android:layout_width="match_parent"
+        android:background="@drawable/img_toolbar"
+        android:layout_height="56dp">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="27dp"
+            android:src="@drawable/btn_logo_2"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
 
-
-
-    <!-- 하단 탭 -->
-   <!--<LinearLayout-->
-       <!--android:orientation="horizontal"-->
-       <!--android:layout_alignParentBottom="true"-->
-       <!--android:layout_width="match_parent"-->
-       <!--android:layout_height="36dp">-->
-
-       <!--<LinearLayout-->
-           <!--android:layout_weight="1"-->
-           <!--android:gravity="center_horizontal"-->
-           <!--android:orientation="vertical"-->
-           <!--android:layout_width="wrap_content"-->
-           <!--android:layout_height="match_parent">-->
-
-           <!--<ImageButton-->
-               <!--android:id="@+id/bt_home_yesterday"-->
-               <!--android:layout_width="wrap_content"-->
-               <!--android:padding="3dp"-->
-               <!--android:background="#ffffffff"-->
-               <!--android:layout_height="wrap_content"-->
-               <!--android:src="@drawable/btn_latest"/>-->
-       <!--</LinearLayout>-->
-       <!--<LinearLayout-->
-           <!--android:layout_weight="1"-->
-           <!--android:orientation="vertical"-->
-           <!--android:gravity="center_horizontal"-->
-           <!--android:layout_width="wrap_content"-->
-           <!--android:layout_height="match_parent">-->
-
-           <!--<ImageButton-->
-               <!--android:id="@+id/bt_home_today"-->
-               <!--android:layout_width="wrap_content"-->
-               <!--android:layout_height="wrap_content"-->
-               <!--android:background="#ffffffff"-->
-               <!--android:padding="3dp"-->
-               <!--android:src="@drawable/btn_today_clicked"/>-->
-       <!--</LinearLayout>-->
-       <!--<LinearLayout-->
-           <!--android:layout_weight="1"-->
-           <!--android:orientation="vertical"-->
-           <!--android:layout_width="wrap_content"-->
-           <!--android:gravity="center_horizontal"-->
-           <!--android:layout_height="match_parent">-->
-
-           <!--<ImageButton-->
-               <!--android:id="@+id/bt_home_profile"-->
-               <!--android:layout_width="wrap_content"-->
-               <!--android:layout_height="wrap_content"-->
-               <!--android:background="#ffffffff"-->
-               <!--android:padding="3dp"-->
-               <!--android:src="@drawable/btn_profile"/>-->
-       <!--</LinearLayout>-->
-
-   <!--</LinearLayout>-->
+    <latte.kr.com.project47seconds.Library.NonSwipeViewPager
+        android:id="@+id/viewpager"
+        android:layout_marginTop="56dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
-        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:paddingTop="3dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager_home"
-        android:layout_marginBottom="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="58dp"
+        app:layout_anchor="@id/viewpager"
+        app:layout_anchorGravity="bottom" />
 
-
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

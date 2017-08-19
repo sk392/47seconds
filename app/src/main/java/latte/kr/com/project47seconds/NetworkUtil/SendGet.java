@@ -24,6 +24,16 @@ public class SendGet extends AsyncTask<String, Void, String> {
     private static final String TAG = "SendGet";
     int sleepTime = 0;
 
+    public boolean isNaverAPi() {
+        return isNaverAPi;
+    }
+
+    public void setNaverAPi(boolean naverAPi) {
+        isNaverAPi = naverAPi;
+    }
+
+    boolean isNaverAPi = false;
+
     public String getTokenData() {
         return tokenData;
     }
@@ -37,20 +47,14 @@ public class SendGet extends AsyncTask<String, Void, String> {
     private String url;
     //결과 값
     private String res;
-    private Context mContext;
-    private boolean isLoadingImg = true;
     private CallbackEvent callbackEvent;
-    private LoadingProgressDialog loadingProgressDialog;
-
-
 
 
     public interface CallbackEvent {
         void getResult(String result);
     }
 
-    public SendGet(Context context) {
-        this.mContext = context;
+    public SendGet() {
         callbackEvent = null;
 
 
@@ -77,9 +81,6 @@ public class SendGet extends AsyncTask<String, Void, String> {
 
         callbackEvent.getResult(s);
         Log.d("SendGet", "Result =" + s);
-        if (isLoadingImg)
-            if (loadingProgressDialog != null)
-                loadingProgressDialog.dismiss();
     }
 
     public String getRes() {
@@ -97,34 +98,36 @@ public class SendGet extends AsyncTask<String, Void, String> {
 
     @Override
     public String doInBackground(String... params) {
-        Log.d("SendGet", "Context = "+mContext.getClass().getName()+" / Request =" + params[0].toString());
-        if (NetworkUtil.getConnectivityStatus(mContext) != NetworkUtil.TYPE_NOT_CONNECTED) {
-            //네트워크가 연결되었을 경우만.
+        //네트워크가 연결되었을 경우만.
 
-            try {
-                if(sleepTime!=0)
-                    Thread.sleep(sleepTime);
+        try {
+            if (sleepTime != 0)
+                Thread.sleep(sleepTime);
 
-                URL obj = new URL(url);
+            URL obj = new URL(url);
 
-                HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-                //read시 연결 시간 timeout시간
-                conn.setReadTimeout(10000);
-                //서버 접속 시 연결시간의 timeout
-                conn.setConnectTimeout(20000);
-                //요청 방식 선택(get,post) get기본
-                //conn.setRequestMethod("GET");
+            HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+            //read시 연결 시간 timeout시간
+            conn.setReadTimeout(10000);
+            //서버 접속 시 연결시간의 timeout
+            conn.setConnectTimeout(20000);
+            //요청 방식 선택(get,post) get기본
+            //conn.setRequestMethod("GET");
 /*
                 //inputstream으로 서버로 부터 응답으로 받겠다는 옵션.
                 conn.setDoInput(true);
                 //outputstream으로 post 데이터를 넘겨주겠다는 옵션
                 conn.setDoOutput(true);
 */
-                // 서버 Response Data를 JSON 형식의 타입으로 요청.
-                conn.setRequestProperty("Accept", "application/json");
+            // 서버 Response Data를 JSON 형식의 타입으로 요청.
+            conn.setRequestProperty("Accept", "application/json");
+            if (isNaverAPi)
+                conn.setRequestProperty("Authorization", tokenData);
+            else
                 conn.setRequestProperty("token", tokenData);
-                //웹서버 형식으로 전송
-                conn.setRequestProperty("content-type", "application/x-www-form-urlencoded");
+
+            //웹서버 형식으로 전송
+            conn.setRequestProperty("content-type", "application/x-www-form-urlencoded");
 /*
                 byte[] outputInBytes = params[0].getBytes("UTF-8");
 
@@ -133,50 +136,36 @@ public class SendGet extends AsyncTask<String, Void, String> {
                 os.flush();
                 os.close();
         */        //서버에 성공적으로 접근했는지를 체크(기능의 성공[ex 로그인]과는 관계가 없다.
-                int retCode = conn.getResponseCode();
-                if (retCode == HttpURLConnection.HTTP_OK) {
-                    InputStream is = conn.getInputStream();
-                    BufferedReader br = new BufferedReader(new InputStreamReader(is,"UTF-8"));
-                    String line;
-                    StringBuffer response = new StringBuffer();
-                    while ((line = br.readLine()) != null) {
-                        response.append(line);
-                    }
-                    res = response.toString();
-
-                    br.close();
-                    is.close();
-                } else {
-                    res = "ErrorCode : " + retCode;
+            int retCode = conn.getResponseCode();
+            if (retCode == 200 || retCode == 201) {
+                InputStream is = conn.getInputStream();
+                BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+                String line;
+                StringBuffer response = new StringBuffer();
+                while ((line = br.readLine()) != null) {
+                    response.append(line);
                 }
+                res = response.toString();
 
-                Thread.sleep(200);
-
-            } catch (ConnectException e) {
-                e.printStackTrace();
-
-            } catch
-                    (Exception e) {
-                e.printStackTrace();
+                br.close();
+                is.close();
+            } else {
+                res = "ErrorCode : " + retCode;
             }
-            return res;
-        } else {
-            //네트워크가 연결되어 있지 않을 때.
-            res = "{'err':'100', 'err_result':'네트워크 연결을 확인해주세요.'}";
-            return res;
+
+            Thread.sleep(200);
+
+        } catch (ConnectException e) {
+            e.printStackTrace();
+
+        } catch
+                (Exception e) {
+            e.printStackTrace();
         }
+        return res;
 
 
     }
-
-    public boolean isLoadingImg() {
-        return isLoadingImg;
-    }
-
-    public void setLoadingImg(boolean loadingImg) {
-        isLoadingImg = loadingImg;
-    }
-
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
